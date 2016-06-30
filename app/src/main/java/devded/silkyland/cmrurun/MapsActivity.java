@@ -292,6 +292,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Intent intent = new Intent(MapsActivity.this, ExerciseActivity.class);
                 intent.putExtra("userID", userIDString);
                 intent.putExtra("Gold", goldString);
+                intent.putExtra("Name", userNameString);
+                intent.putExtra("Avata", getIntent().getStringExtra("Avata"));
                 startActivity(intent);
                 finish();
 

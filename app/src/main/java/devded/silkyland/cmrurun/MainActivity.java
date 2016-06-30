@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         nameUserString = jsonObject.getString("Name");
                         strID = jsonObject.getString("id");
                         goldString = jsonObject.getString("Gold");
+                        avataString = jsonObject.getString("Avata");
 
                     }  // if
 
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Name", nameUserString);
                     intent.putExtra("userID", strID);
                     intent.putExtra("Gold", goldString);
+                    intent.putExtra("Avata", avataString);
                     startActivity(intent);
                     finish();
 
