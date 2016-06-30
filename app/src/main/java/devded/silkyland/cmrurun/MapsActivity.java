@@ -1,6 +1,7 @@
 package devded.silkyland.cmrurun;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Criteria criteria;
     private String userIDString, userNameString,goldString;
     private static final String urlEditLocation = "http://swiftcodingthai.com/cmru/edit_location_master.php";
+    private boolean statusABoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,13 +239,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SynLocation synLocation = new SynLocation();
         synLocation.execute();
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                myLoop();
-            }
-        }, 3000);
+        if (statusABoolean) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    myLoop();
+                }
+            }, 3000);
+        }
     }
 
     private void checkDistance() {
@@ -264,7 +269,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Log.d("30JuneV2", "myDistance เทียบกับ ฐานที่ " + goldString + " มีค่าเท่ากับ " + douMyDistance);
 
+        if (douMyDistance < 10) {
+            confirmDialog();
+        }
+
     }   // checkDistance
+
+    private void confirmDialog() {
+
+        statusABoolean = false;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.doremon48);
+        builder.setTitle("คุณถึงด่านที่ " + Integer.toString(Integer.parseInt(goldString) + 1));
+        builder.setMessage("คุณต้องทำคะแนน 3/5 ถึงจะผ่านไปได้");
+        builder.setPositiveButton("เริ่มตอบคำถาม", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        })
+
+
+    }
 
     private double rad2deg(double douMyDistance) {
 
