@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String urlJson = "http://swiftcodingthai.com/cmru/get_user_master.php";
     private ImageView imageView;
     private EditText usernameEditText, passwordEditText;
-    private String userString, passwordString, strID, goldString;
+    private String userString, passwordString, strID, goldString, avataString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
