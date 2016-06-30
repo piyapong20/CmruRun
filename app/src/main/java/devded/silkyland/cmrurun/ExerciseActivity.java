@@ -41,6 +41,7 @@ public class ExerciseActivity extends AppCompatActivity {
         goldString = getIntent().getStringExtra("Gold");
         avataString = getIntent().getStringExtra("Avata");
 
+
         //Show View
         MyData myData = new MyData();
         int[] iconInts = myData.getAvatarInts();
