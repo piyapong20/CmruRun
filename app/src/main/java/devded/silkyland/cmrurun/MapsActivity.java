@@ -262,7 +262,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         douMyDistance = douMyDistance * 60 * 1.15115 * 1.609344 * 1000;
 
-        Log.d("30juneV2", "myDistance เทียบกับ ฐานที่ " + goldString + "มีค่าเท่ากับ " + douMyDistance);
+        Log.d("30JuneV2", "myDistance เทียบกับ ฐานที่ " + goldString + " มีค่าเท่ากับ " + douMyDistance);
 
     }   // checkDistance
 
