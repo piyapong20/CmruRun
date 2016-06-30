@@ -38,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double userLatADouble, userLngADouble;
     private LocationManager locationManager;
     private Criteria criteria;
-    private String userIDString, userNameString;
+    private String userIDString, userNameString,goldString;
     private static final String urlEditLocation = "http://swiftcodingthai.com/cmru/edit_location_master.php";
 
     @Override
@@ -58,6 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Get Value From Intent
         userIDString = getIntent().getStringExtra("userID");
         userNameString = getIntent().getStringExtra("Name");
+        goldString = getIntent().getStringExtra("Gold");
+
         Log.d("30JuneV1", "userID ==> " + userIDString);
         Log.d("30JuneV1", "userName ==> " + userNameString);
 
@@ -229,6 +231,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         editLocation();
 
+        checkDistance();
+
         SynLocation synLocation = new SynLocation();
         synLocation.execute();
 
@@ -240,6 +244,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }, 3000);
     }
+
+    private void checkDistance() {
+
+        double douMyDistance =
+
+    }   // checkDistance
 
     private void editLocation() {
 
