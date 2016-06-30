@@ -288,8 +288,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
+
             }
-        })
+        });
 
 
     }
