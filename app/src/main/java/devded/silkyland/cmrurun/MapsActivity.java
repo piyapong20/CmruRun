@@ -2,6 +2,7 @@ package devded.silkyland.cmrurun;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -288,9 +289,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
+                Intent intent = new Intent(MapsActivity.this, ExerciseActivity.class);
+                intent.putExtra("userID", userIDString);
+                intent.putExtra("Gold", goldString);
+                startActivity(intent);
+                finish();
 
-            }
+            } // onClick
         });
+        builder.show();
 
 
     }
