@@ -206,6 +206,10 @@ public class ExerciseActivity extends AppCompatActivity {
 
             if (timesAnInt != 4) {
                 timesAnInt += 1;
+            }else {
+                //Time = 4
+                //End of Times
+                Log.d("1JulyV4", "End of Times");
             }
 
             radioGroup.clearCheck();
@@ -217,8 +221,6 @@ public class ExerciseActivity extends AppCompatActivity {
             choice3RadioButton.setText(myChoice3Strings[timesAnInt]);
             choice4RadioButton.setText(myChoice4Strings[timesAnInt]);
 
-        } else {
-            //End of Times
         }
 
     }   // ClickAnswer
