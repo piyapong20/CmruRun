@@ -199,7 +199,7 @@ public class ExerciseActivity extends AppCompatActivity {
             result = false;
         }
 
-        return false;
+        return result;
     }
 
 }   // Main Class
