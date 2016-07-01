@@ -30,6 +30,7 @@ public class ExerciseActivity extends AppCompatActivity {
             choice3RadioButton, choice4RadioButton;
     private String[] myQuestionStrings, myChoice1Strings, myChoice2Strings,
             myChoice3Strings, myChoice4Strings, myAnswerStrings;
+    private int timesAnInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,12 +171,14 @@ public class ExerciseActivity extends AppCompatActivity {
         //Check Choose
 
         if (checkChoose()) {
-            //Checked
-
-        } else {
             //UnChecked
             MyAlert myAlert = new MyAlert();
-            myAlert.myDialog(this, "ไม่ได้ตอบคำถาม", "กรุณาตอบคำถาม");
+            myAlert.myDialog(this, "ไม่ได้ตอบคำถาม",
+                    "กรุณาตอบคำถาม");
+
+        } else {
+            //Checked
+
 
         }
 
@@ -191,15 +194,14 @@ public class ExerciseActivity extends AppCompatActivity {
                 choice4RadioButton.isChecked()) {
 
             //Checked
-            result = true;
-
+            result = false;
 
         } else {
             //UnChecked
-            result = false;
+            result = true;
         }
 
         return result;
-    }
+    }   //CheckChoose
 
 }   // Main Class
