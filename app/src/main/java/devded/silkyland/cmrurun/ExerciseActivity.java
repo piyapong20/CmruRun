@@ -17,6 +17,8 @@ import com.squareup.okhttp.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 public class ExerciseActivity extends AppCompatActivity {
 
     //Explicit
@@ -26,6 +28,8 @@ public class ExerciseActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton choice1RadioButton, choice2RadioButton,
             choice3RadioButton, choice4RadioButton;
+    private String[] myQuestionStrings, myChoice1Strings, myChoice2Strings,
+            myChoice3Strings, myChoice4Strings, myAnswerStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +124,26 @@ public class ExerciseActivity extends AppCompatActivity {
 
                 }   // For
 
+                myQuestionStrings = new String[5];
+                myChoice1Strings = new String[5];
+                myChoice2Strings = new String[5];
+                myChoice3Strings = new String[5];
+                myChoice4Strings = new String[5];
+                myAnswerStrings = new String[5];
+
+                for (int i = 0; i < 5; i++) {
+
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(jsonArray.length());
+                    myQuestionStrings[i] = questionStrings[randomIndex];
+                    myChoice1Strings[i] = choice1Strings[randomIndex];
+                    myChoice2Strings[i] = choice2Strings[randomIndex];
+                    myChoice3Strings[i] = choice3Strings[randomIndex];
+                    myChoice4Strings[i] = choice4Strings[randomIndex];
+                    myAnswerStrings[i] = answerStrings[randomIndex];
+
+                }   //For
+
             } catch (Exception e) {
                 Log.d("1JulyV1", "e onPost ==> " + e.toString());
             }
@@ -129,6 +153,10 @@ public class ExerciseActivity extends AppCompatActivity {
 
 
     public void clickAnswer(View view) {
+
+        for (int i=0;i<5;i++) {
+            Log.d("1JulyV3", "myQuestion(" + i + ") = " + myQuestionStrings[i]);
+        }
 
     }   // ClickAnswer
 
