@@ -1,5 +1,6 @@
 package devded.silkyland.cmrurun;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -210,6 +212,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 //Time = 4
                 //End of Times
                 Log.d("1JulyV4", "End of Times");
+                checkUserScore();
             }
 
             radioGroup.clearCheck();
@@ -224,6 +227,24 @@ public class ExerciseActivity extends AppCompatActivity {
         }
 
     }   // ClickAnswer
+
+    private void checkUserScore() {
+
+        if (scoreAnInt >= 3) {
+            //Update Gold
+
+        } else {
+            //Play Again
+            Toast.makeText(this,
+                    "คะแนนของคุณ " + Integer.toString(scoreAnInt) + " คะแนน ต้องตอบคำถามใหม่",
+                    Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+
+        }
+
+    }   //checkUserScore
 
     private boolean checkChoose() {
 
