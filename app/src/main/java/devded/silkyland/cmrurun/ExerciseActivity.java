@@ -153,7 +153,6 @@ public class ExerciseActivity extends AppCompatActivity {
                 choice4RadioButton.setText(myChoice4Strings[0]);
 
 
-
             } catch (Exception e) {
                 Log.d("1JulyV1", "e onPost ==> " + e.toString());
             }
@@ -176,10 +175,21 @@ public class ExerciseActivity extends AppCompatActivity {
             myAlert.myDialog(this, "ไม่ได้ตอบคำถาม",
                     "กรุณาตอบคำถาม");
 
+        } else if (timesAnInt < 5) {
+
+            if (timesAnInt !=4) {
+                timesAnInt += 1;
+            }
+
+            questionTextView.setText(Integer.toString(timesAnInt + 1 ) +
+                    ". " + myQuestionStrings[timesAnInt]);
+            choice1RadioButton.setText(myChoice1Strings[timesAnInt]);
+            choice2RadioButton.setText(myChoice2Strings[timesAnInt]);
+            choice3RadioButton.setText(myChoice3Strings[timesAnInt]);
+            choice4RadioButton.setText(myChoice4Strings[timesAnInt]);
+
         } else {
-            //Checked
-
-
+            //End of Times
         }
 
     }   // ClickAnswer
