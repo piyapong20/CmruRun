@@ -12,13 +12,18 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class ExerciseActivity extends AppCompatActivity {
@@ -33,6 +38,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private String[] myQuestionStrings, myChoice1Strings, myChoice2Strings,
             myChoice3Strings, myChoice4Strings, myAnswerStrings;
     private int timesAnInt = 0, scoreAnInt = 0, userChooseAnInt;
+    private int intGold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,6 +238,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
         if (scoreAnInt >= 3) {
             //Update Gold
+            Toast.makeText(this, "ยินดีด้วยคุณผ่านด่านแว้วววว", Toast.LENGTH_SHORT).show();
+            editGoldOnServer();
 
         } else {
             //Play Again
@@ -245,6 +253,45 @@ public class ExerciseActivity extends AppCompatActivity {
         }
 
     }   //checkUserScore
+
+    private void editGoldOnServer() {
+
+        String urlPHP = "http://swiftcodingthai.com/cmru/edit_gold.php";
+        if (Integer.parseInt(goldString)< 4) {
+            intGold = Integer.parseInt(goldString) + 1;
+        } else {
+            // Finish at Station4
+        }
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd", "true")
+                .add("id", userIDString)
+                .add("Gold", Integer.toString(intGold))
+                .build();
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url(urlPHP).post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+            }
+        });
+
+        Intent intent = new Intent(ExerciseActivity.this, MapsActivity.class);
+        intent.putExtra("userID", userIDString);
+        intent.putExtra("Name", nameString);
+        intent.putExtra("Gold", Integer.toString(intGold));
+        startActivity(intent);
+        finish();
+
+    }   // editGoldOnServer
 
     private boolean checkChoose() {
 
