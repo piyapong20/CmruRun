@@ -117,7 +117,7 @@ public class ExerciseActivity extends AppCompatActivity {
                     choice1Strings[i] = jsonObject.getString("Choice1");
                     choice2Strings[i] = jsonObject.getString("Choice2");
                     choice3Strings[i] = jsonObject.getString("Choice3");
-                    choice3Strings[i] = jsonObject.getString("Choice4");
+                    choice4Strings[i] = jsonObject.getString("Choice4");
                     answerStrings[i] = jsonObject.getString("Answer");
 
                     Log.d("1JulyV2", "question(" + i + ") = " + questionStrings[i]);
@@ -144,17 +144,26 @@ public class ExerciseActivity extends AppCompatActivity {
 
                 }   //For
 
+                // Show View Times 1
+                questionTextView.setText("1. " + myQuestionStrings[0]);
+                choice1RadioButton.setText(myChoice1Strings[0]);
+                choice2RadioButton.setText(myChoice2Strings[0]);
+                choice3RadioButton.setText(myChoice3Strings[0]);
+                choice4RadioButton.setText(myChoice4Strings[0]);
+
+
+
             } catch (Exception e) {
                 Log.d("1JulyV1", "e onPost ==> " + e.toString());
             }
-        }
+        }   // onPost
 
     }   // SynQuestion
 
 
     public void clickAnswer(View view) {
 
-        for (int i=0;i<5;i++) {
+        for (int i = 0; i < 5; i++) {
             Log.d("1JulyV3", "myQuestion(" + i + ") = " + myQuestionStrings[i]);
         }
 
