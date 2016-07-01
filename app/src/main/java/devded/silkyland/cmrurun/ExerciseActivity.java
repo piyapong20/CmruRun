@@ -181,6 +181,8 @@ public class ExerciseActivity extends AppCompatActivity {
                 timesAnInt += 1;
             }
 
+            radioGroup.clearCheck();
+
             questionTextView.setText(Integer.toString(timesAnInt + 1 ) +
                     ". " + myQuestionStrings[timesAnInt]);
             choice1RadioButton.setText(myChoice1Strings[timesAnInt]);
